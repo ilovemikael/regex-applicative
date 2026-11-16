@@ -11,7 +11,6 @@ module Text.Regex.Applicative.Common (
   ) where
 
 import Data.Char
-import Data.List (foldl')
 import Text.Regex.Applicative
 
 

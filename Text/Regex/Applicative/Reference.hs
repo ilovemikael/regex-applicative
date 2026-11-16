@@ -24,7 +24,6 @@ import Control.Monad
 newtype P s a = P { unP :: [s] -> [(a, [s])] }
 
 instance Monad (P s) where
-    return x = P $ \s -> [(x, s)]
     (P a) >>= k = P $ \s ->
         a s >>= \(x,s) -> unP (k x) s
 
@@ -33,7 +32,6 @@ instance Functor (P s) where
 
 instance Applicative (P s) where
     (<*>) = ap
-    pure = return
 
 instance Alternative (P s) where
     empty = P $ const []
